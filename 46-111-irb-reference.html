@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>45 CFR 46.111 — AI Research IRB Reference | TechInHSR LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Trebuchet+MS&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A2B4A;
+  --navy-light: #243860;
+  --navy-dark: #111D33;
+  --teal: #2E86AB;
+  --teal-light: #3A9FC4;
+  --gold: #FFC000;
+  --gold-dark: #E6AC00;
+  --white: #ffffff;
+  --off-white: #F7F8FA;
+  --gray-50: #F4F5F7;
+  --gray-100: #E8EAED;
+  --gray-200: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+  --rp-bg: #EEF0FF;
+  --rp-text: #2D3282;
+  --rp-dot: #4A5FD4;
+  --b-bg: #E6F5EE;
+  --b-text: #1A5C3A;
+  --b-dot: #1D8A52;
+  --j-bg: #FFF4E0;
+  --j-text: #7A4A00;
+  --j-dot: #C47A00;
+  --flag-bg: #FFF4E0;
+  --flag-text: #7A4A00;
+  --flag-lbl: #C47A00;
+  --tension-bg: #FFF8E6;
+  --tension-border: #FFC000;
+  --tension-text: #7A4A00;
+  --sf: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: var(--sf); background: var(--gray-50); color: var(--gray-800); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--navy);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  flex-shrink: 0;
+  border-bottom: 3px solid var(--gold);
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-mark {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: "Trebuchet MS", "Trebuchet", sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px;
+}
+.brand-name { font-family: "Trebuchet MS", "Trebuchet", sans-serif; font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: 0.3px; }
+.brand-tag { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.topbar-title { font-family: "Trebuchet MS", "Trebuchet", sans-serif; font-size: 13px; color: rgba(255,255,255,0.7); }
+.companion-link {
+  font-size: 12px; font-weight: 500; color: var(--gold); text-decoration: none;
+  border: 1px solid var(--gold); border-radius: 6px; padding: 5px 12px;
+  transition: background 0.15s;
+}
+.companion-link:hover { background: var(--gold); color: var(--navy); }
+
+/* ── LAYOUT ── */
+.app { display: flex; flex: 1; height: calc(100vh - 58px); overflow: hidden; }
+
+/* ── NAV ── */
+.nav {
+  width: 252px; flex-shrink: 0;
+  background: var(--navy-dark);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.nav-hdr {
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.home-btn {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; padding: 9px 12px; border-radius: 7px;
+  border: 1px solid rgba(255,192,0,0.4);
+  background: transparent; margin-bottom: 14px;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: var(--sf);
+}
+.home-btn:hover { background: rgba(255,192,0,0.12); border-color: var(--gold); }
+.home-btn svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; flex-shrink: 0; }
+.home-btn-txt { font-size: 13px; font-weight: 600; color: var(--gold); }
+.nav-label { font-family: "Trebuchet MS", "Trebuchet", sans-serif; font-size: 13px; font-weight: 700; color: var(--white); }
+.nav-sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+.nav-scroll { flex: 1; overflow-y: auto; padding: 8px 0; }
+.nav-scroll::-webkit-scrollbar { width: 3px; }
+.nav-scroll::-webkit-scrollbar-track { background: transparent; }
+.nav-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+.nav-grp {
+  padding: 12px 16px 5px;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.nav-grp.bordered { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; }
+.nitem {
+  padding: 10px 14px; cursor: pointer;
+  margin: 2px 8px; border-radius: 7px;
+  transition: background 0.12s;
+  border: 1px solid transparent;
+}
+.nitem:hover { background: rgba(255,255,255,0.06); }
+.nitem.active { background: var(--teal); border-color: var(--teal-light); }
+.nitem-code { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.55); font-family: var(--sf); }
+.nitem.active .nitem-code { color: rgba(255,255,255,0.9); }
+.nitem-ttl { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.4; margin-top: 2px; }
+.nitem.active .nitem-ttl { color: rgba(255,255,255,0.85); }
+.nitem-pills { display: flex; gap: 3px; flex-wrap: wrap; margin-top: 5px; }
+.npill { font-size: 9px; font-weight: 600; padding: 2px 7px; border-radius: 99px; }
+.npill-rp { background: rgba(74,95,212,0.25); color: #A0AAFF; }
+.npill-b { background: rgba(29,138,82,0.25); color: #7DCCAA; }
+.npill-j { background: rgba(196,122,0,0.25); color: #FFD080; }
+.nitem.active .npill-rp,
+.nitem.active .npill-b,
+.nitem.active .npill-j { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.85); }
+
+/* ── DETAIL ── */
+.detail { flex: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden; background: var(--white); }
+
+/* ── HOME SCREEN ── */
+.home-screen { flex: 1; padding: 44px 52px; overflow-y: auto; }
+.hs-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--navy); color: var(--gold);
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 99px; margin-bottom: 22px;
+}
+.hs-title {
+  font-family: "Trebuchet MS", "Trebuchet", sans-serif;
+  font-size: 28px; font-weight: 700; color: var(--navy);
+  line-height: 1.25; margin-bottom: 14px;
+}
+.hs-title span { color: var(--teal); }
+.hs-desc { font-size: 15px; color: var(--gray-600); line-height: 1.75; margin-bottom: 32px; max-width: 580px; }
+.hs-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; }
+.hs-card {
+  background: var(--gray-50); border-radius: 10px;
+  padding: 20px; border: 1px solid var(--gray-100);
+  border-top: 3px solid var(--teal);
+}
+.hs-card-icon { font-size: 22px; margin-bottom: 10px; }
+.hs-card-ttl { font-family: "Trebuchet MS", "Trebuchet", sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.hs-card-txt { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+.hs-legend {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding: 16px 20px; background: var(--navy);
+  border-radius: 10px; margin-bottom: 24px;
+}
+.hs-leg { display: flex; align-items: center; gap: 9px; font-size: 13px; color: rgba(255,255,255,0.8); }
+.leg-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.hs-hint { font-size: 13px; color: var(--gray-400); display: flex; align-items: center; gap: 8px; }
+.hs-hint svg { width: 15px; height: 15px; stroke: var(--teal); fill: none; }
+
+/* ── DETAIL HEADER ── */
+.d-head { padding: 24px 32px 0; border-bottom: 1px solid var(--gray-100); }
+.d-crumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-400); margin-bottom: 10px; }
+.d-crumb svg { width: 13px; height: 13px; stroke: var(--teal); fill: none; }
+.d-crumb span { color: var(--teal); font-weight: 500; }
+.d-code { font-size: 12px; color: var(--gray-400); margin-bottom: 5px; font-family: var(--sf); }
+.d-title { font-family: "Trebuchet MS", "Trebuchet", sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.d-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; padding-bottom: 20px; }
+.dpill { font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px; font-family: var(--sf); }
+.dpill-rp { background: var(--rp-bg); color: var(--rp-text); }
+.dpill-b { background: var(--b-bg); color: var(--b-text); }
+.dpill-j { background: var(--j-bg); color: var(--j-text); }
+
+/* ── TABS ── */
+.tabs { display: flex; border-bottom: 1px solid var(--gray-100); padding: 0 32px; background: var(--white); }
+.tab {
+  padding: 14px 18px; font-size: 13px; font-weight: 500;
+  color: var(--gray-400); cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+  white-space: nowrap; transition: color 0.12s; font-family: var(--sf);
+}
+.tab:hover { color: var(--navy); }
+.tab.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 700; }
+
+/* ── TAB BODY ── */
+.tab-body { flex: 1; padding: 28px 32px; overflow-y: auto; }
+.tab-body::-webkit-scrollbar { width: 4px; }
+.tab-body::-webkit-scrollbar-track { background: transparent; }
+.tab-body::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
+
+.slbl {
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--gray-400); margin-bottom: 14px;
+}
+.reg-block {
+  background: var(--gray-50); border-left: 4px solid var(--navy);
+  padding: 20px 24px; font-size: 16px; line-height: 1.8;
+  color: var(--navy); border-radius: 0 8px 8px 0; font-family: var(--sf);
+}
+.pcard {
+  border: 1px solid var(--gray-100); border-radius: 10px;
+  padding: 22px 24px; margin-bottom: 14px; background: var(--white);
+  border-top: 3px solid var(--gray-100);
+}
+.pcard-rp { border-top-color: var(--rp-dot); }
+.pcard-b { border-top-color: var(--b-dot); }
+.pcard-j { border-top-color: var(--j-dot); }
+.pc-head { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+.pc-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.pc-dot-rp { background: var(--rp-dot); }
+.pc-dot-b { background: var(--b-dot); }
+.pc-dot-j { background: var(--j-dot); }
+.pc-name { font-size: 13px; font-weight: 700; font-family: "Trebuchet MS", "Trebuchet", sans-serif; }
+.pc-name-rp { color: var(--rp-text); }
+.pc-name-b { color: var(--b-text); }
+.pc-name-j { color: var(--j-text); }
+.pc-text { font-size: 15px; color: var(--gray-600); line-height: 1.75; font-family: var(--sf); }
+.tension {
+  margin-top: 8px; border-left: 4px solid var(--gold);
+  padding: 16px 20px; border-radius: 0 8px 8px 0;
+  background: var(--tension-bg);
+}
+.tension-lbl { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
+.tension-txt { font-size: 15px; color: var(--tension-text); line-height: 1.75; font-family: var(--sf); }
+.sc-card { background: var(--gray-50); border-radius: 10px; padding: 24px; margin-bottom: 14px; border: 1px solid var(--gray-100); }
+.sc-lbl { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.sc-txt { font-size: 15px; color: var(--gray-600); line-height: 1.75; margin-bottom: 18px; font-family: var(--sf); }
+.sc-flag { background: var(--flag-bg); border-radius: 8px; padding: 16px 20px; border-left: 4px solid var(--gold); }
+.sc-flag-lbl { font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--flag-lbl); margin-bottom: 8px; }
+.sc-flag-txt { font-size: 14px; color: var(--flag-text); line-height: 1.7; font-family: var(--sf); }
+.aitem {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 20px; border: 1px solid var(--gray-100);
+  border-radius: 10px; margin-bottom: 10px; background: var(--white);
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.aitem:hover { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(46,134,171,0.08); }
+.anum {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--navy); color: var(--gold);
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px; font-family: var(--sf);
+}
+.atxt { font-size: 15px; color: var(--gray-600); line-height: 1.7; font-family: var(--sf); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy); border-top: 3px solid var(--gold);
+  padding: 10px 28px; display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.footer-left { font-size: 11px; color: rgba(255,255,255,0.45); font-family: var(--sf); }
+.footer-left strong { color: var(--gold); font-weight: 700; }
+.footer-right { font-size: 11px; color: rgba(255,255,255,0.35); font-family: var(--sf); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <a class="brand" href="#" onclick="showHome(); return false;">
+    <div class="brand-mark">Ti</div>
+    <div>
+      <div class="brand-name">TechInHSR LLC</div>
+      <div class="brand-tag">AI Governance &amp; HSR Compliance</div>
+    </div>
+  </a>
+  <div class="topbar-right">
+    <span class="topbar-title">45 CFR 46.111 — Common Rule</span>
+    <a class="companion-link" href="56-111-irb-reference.html">21 CFR 56.111 companion →</a>
+  </div>
+</header>
+
+<div class="app">
+  <!-- NAV -->
+  <nav class="nav" aria-label="Criteria navigation">
+    <div class="nav-hdr">
+      <button class="home-btn" id="homebtn" aria-label="Return to home screen">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="home-btn-txt">Home</span>
+      </button>
+      <div class="nav-label">45 CFR 46.111</div>
+      <div class="nav-sub">Common Rule · AI Research Reference</div>
+    </div>
+    <div class="nav-scroll" id="navlist"></div>
+  </nav>
+
+  <!-- DETAIL -->
+  <main class="detail" id="detail" aria-live="polite"></main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">© 2025 <strong>TechInHSR LLC</strong> · Tamiko Eto, MA, CIP · AI Governance &amp; Human Subjects Research Compliance</div>
+  <div class="footer-right">For educational and training purposes · Not legal advice</div>
+</footer>
+
+<script>
+(function(){
+var D=[
+  {id:"a1i",code:"§46.111(a)(1)(i)",title:"Risks minimized — sound design",pp:["b"],
+   reg:"Risks minimized by using procedures consistent with sound research design that do not unnecessarily expose subjects to risk.",
+   bel:[{p:"b",n:"Beneficence",t:"Sound research design is the operational expression of beneficence. If the design is flawed — poor validation strategy, training-deployment population mismatch, no out-of-distribution testing — the knowledge produced is unreliable, the risk-knowledge exchange breaks down, and any subject exposure is unjustifiable. The IRB has explicit authority under (a)(1) to reject a protocol on design grounds, not just consent grounds. Most IRBs underuse this authority in AI research."}],
+   ten:null,
+   sc:"A neurology team submits a protocol to deploy an AI seizure-prediction model in a pediatric epilepsy clinic. The validation data cited is from an adult ICU population at a different institution. The protocol does not describe fallback procedures for low-confidence outputs, nor does it define performance thresholds below which the AI will not be used clinically.",
+   fl:"The gap between the adult ICU validation cohort and the pediatric outpatient population is a sound-design failure, not a generalizability footnote. The claimed performance figures are inapplicable to the study population — using them to justify risk exposure violates (a)(1)(i).",
+   ac:["Require performance validation data specific to the pediatric outpatient population, or require prospective validation as a study aim before any clinical use begins.","Require prospective performance floors: minimum acceptable sensitivity and specificity below which AI outputs will not be used in clinical decisions.","Require documentation of fallback procedures — what happens when the model produces a low-confidence or out-of-distribution output."]},
+  {id:"a1ii",code:"§46.111(a)(1)(ii)",title:"Risks minimized — existing procedures",pp:["b","rp"],
+   reg:"Risks minimized, whenever appropriate, by using procedures already being performed on subjects for diagnostic or treatment purposes.",
+   bel:[{p:"b",n:"Beneficence",t:"Using existing clinical procedures is a harm-minimization strategy: if data is already collected for care, adding a research layer imposes no additive procedural risk. Frequently invoked in AI research using EHR data or clinical imaging where no additional data collection occurs."},{p:"rp",n:"Respect for persons",t:"When a clinical procedure is used for dual purposes — care and research — subjects may not recognize the distinction. Therapeutic misconception is amplified when the research procedure is invisible, such as a background AI model running on routine clinical data. The IRB must confirm that invoking (a)(1)(ii) does not become a justification for reducing consent disclosure."}],
+   ten:"Beneficence supports dual-use efficiency. Respect for persons requires the dual use be transparent. The IRB must confirm that efficiency is not used to obscure the research layer from subjects.",
+   sc:"The team argues that because EEG recordings are already collected for clinical care, no additional risk is imposed by running the AI model on them. They request waiver of documentation of consent on the same basis.",
+   fl:"The efficiency argument under (a)(1)(ii) is valid for the data collection step only. Running an AI model on clinical data for research purposes is an activity the subject is entitled to know about — the absence of an additional procedure does not eliminate the respect-for-persons obligation.",
+   ac:["Confirm the existing-procedure argument applies only to data collection, not to the research use itself.","Require explicit consent disclosure that clinical data is being analyzed by an AI model as part of a research study.","Evaluate any waiver of consent under §46.116(f)(3) independently — do not permit it to piggyback on the (a)(1)(ii) efficiency argument."]},
+  {id:"a2",code:"§46.111(a)(2)",title:"Risks reasonable to benefits",pp:["b","j"],
+   reg:"Risks to subjects are reasonable in relation to anticipated benefits and the importance of expected knowledge. Only research-derived risks and benefits are considered; long-range societal effects are excluded.",
+   bel:[{p:"b",n:"Beneficence",t:"Beneficence operationalized as a ratio: the IRB must scrutinize performance claims on the benefit side and require documentation of known failure modes on the risk side. Automation bias — the tendency of clinicians to defer uncritically to AI outputs — is a research-derived harm that belongs on the risk side. 'The AI improves diagnostic accuracy by 15%' is analytically empty without specifying the population, baseline comparator, and metric."},{p:"j",n:"Justice",t:"Justice enters through the distribution question: whose risks and whose benefits? If subjects bearing risk are not the population likely to benefit from deployment, the ratio may appear favorable in aggregate while being distributively unjust. A study can satisfy beneficence while failing justice — most IRBs underweight the justice dimension in (a)(2)."}],
+   ten:"Beneficence asks whether the aggregate ratio is net-positive. Justice asks whether it is equitably distributed. The regulation does not resolve this — it is an IRB judgment call.",
+   sc:"The protocol claims the AI reduces time-to-diagnosis by 23% based on a retrospective study at an adult academic medical center. The proposed population is pediatric patients at a safety-net hospital. The PI is also the founding engineer of the startup that developed NeuroPred, with a licensing agreement pending FDA clearance.",
+   fl:"The 23% benefit claim is drawn from a non-comparable population, inflating the benefit side. The PI-as-developer COI creates systematic pressure to minimize risk disclosure. The IRB's (a)(2) determination is only as valid as the underlying data — controlled here by a conflicted party.",
+   ac:["Require performance data from a pediatric population, or require explicit acknowledgment of the extrapolation gap with a downward-adjusted benefit estimate.","Flag the PI-as-developer COI and require independent risk-benefit assessment, or a conflict-free co-investigator to lead the IRB-facing analysis.","Require documentation of known failure modes — not just average performance — including edge cases and low-confidence outputs.","Ask specifically: compared to what baseline, in what population, on what metric?"]},
+  {id:"a3",code:"§46.111(a)(3)",title:"Equitable subject selection",pp:["j","rp"],
+   reg:"Selection of subjects is equitable given research purposes and setting. IRB must be particularly cognizant of vulnerability to coercion or undue influence.",
+   bel:[{p:"j",n:"Justice",t:"Justice requires that burdens and benefits be fairly distributed. In AI research, equity must be assessed at two levels: who is enrolled, and whose data trained the model. The Justice Inversion problem — deployment populations bearing risk are often not the populations whose data generated the model — is a justice question (a)(3) reaches, though most IRBs do not push it this far."},{p:"rp",n:"Respect for persons",t:"The criterion's explicit mention of vulnerability to coercion is a respect-for-persons concern. Coercion and undue influence undermine voluntariness — a precondition of autonomous consent. In AI research, vulnerability extends to patients with low health literacy, institutional settings where refusal feels consequential, and subjects who cannot meaningfully evaluate AI-generated information."}],
+   ten:"Justice asks whether enrollment is distributively fair. Respect for persons asks whether enrollment is voluntarily autonomous. Both must be assessed independently — a population can be legitimately enrolled under justice principles while still subject to subtle coercion.",
+   sc:"The study enrolls pediatric patients at a safety-net hospital serving low-income, Spanish-speaking families. NeuroPred was trained on EEG data from three private academic medical centers with predominantly English-speaking, higher-income patients. Exclusion criteria include patients whose primary language is not English.",
+   fl:"The training-deployment demographic mismatch is a justice failure. The English-only exclusion criterion simultaneously under-enrolls the population bearing the most deployment risk and may serve the researcher's convenience without serving subjects' interests.",
+   ac:["Require documentation of NeuroPred's training data demographics compared explicitly to the proposed study population.","Require scientific justification for the English-only exclusion — if it is a proxy for convenience rather than clinical necessity, it fails (a)(3).","Assess whether the safety-net hospital setting creates undue influence conditions — do patients have meaningful alternatives to participation?","Require consent and assent materials in Spanish with documented interpreter support."]},
+  {id:"a4",code:"§46.111(a)(4)",title:"Informed consent will be sought",pp:["rp"],
+   reg:"Informed consent will be sought from each prospective subject or legally authorized representative, in accordance with §46.116.",
+   bel:[{p:"rp",n:"Respect for persons",t:"The purest expression of respect for persons in the approval criteria. For AI research, generic disclosure of 'computer-assisted procedures' is not sufficient. The consent process must convey: the AI system's identity and role; its explainability limits; automation bias risk (that clinicians may be influenced by AI outputs even when incorrect); and that opting out of AI components is a genuine, not nominal, option."}],
+   ten:null,
+   sc:"The consent form states the study uses 'advanced computer software to assist in reviewing your child's brain wave data.' It does not identify NeuroPred, describe its role in generating clinical recommendations, explain that the neurologist receives AI outputs before making treatment decisions, or disclose the AI's explainability limitations. LAR consent is in English only.",
+   fl:"'Advanced computer software' does not communicate that an AI system generates clinical recommendations the physician sees before making decisions. Absent automation bias disclosure, the subject cannot evaluate a material risk of participation.",
+   ac:["Require the consent form to identify NeuroPred and describe its specific function — including that the neurologist reviews AI predictions before clinical decisions.","Require explicit automation bias disclosure: clinicians may be influenced by AI outputs even when those outputs are incorrect.","Require disclosure of explainability limits: the system cannot explain step-by-step how it reached a specific prediction.","Require LAR consent in Spanish with documented interpreter support.","Confirm that opting out of the AI component is genuinely available, not a nominal option that effectively means opting out of the study entirely."]},
+  {id:"a5",code:"§46.111(a)(5)",title:"Consent documented or waived",pp:["rp","j"],
+   reg:"Informed consent will be appropriately documented or appropriately waived in accordance with §46.117.",
+   bel:[{p:"rp",n:"Respect for persons",t:"Documentation of consent creates an evidentiary record that the autonomous-choice process actually occurred. Waiver of documentation is permissible when the signed form would itself be the primary risk — a context that rarely applies in AI research."},{p:"j",n:"Justice",t:"Waiver of consent carries a justice dimension. 'Impracticability' arguments in AI research are frequently driven by a preference for large unfiltered datasets. The IRB must assess whether impracticability is genuine or reflects convenience that falls hardest on those least positioned to assert their interests."}],
+   ten:"Waiver of consent can be simultaneously justified on beneficence grounds and problematic on justice grounds — groups whose data is used without consent are often not those who will benefit. The regulation requires the IRB to resolve this tension.",
+   sc:"The team requests waiver of consent for a secondary analysis using five years of archived EEG data to further train NeuroPred. Justification: obtaining consent from prior patients is 'impractical' due to volume. The archived data includes records from patients seen before any AI research was contemplated.",
+   fl:"'Impractical due to volume' is not a complete §46.116(f)(3) analysis. All four prongs must be addressed. Whether subjects would reasonably expect their archived EEG data to be used for commercial AI training is a material question the team has not answered.",
+   ac:["Require a complete §46.116(f)(3) four-prong analysis — not just an impracticability assertion.","Ask whether a subset of prior patients could be contacted for prospective consent, and whether the waiver is truly necessary for the full dataset.","Assess whether subjects would reasonably expect this data use — if not, the adverse-effects-on-rights prong is implicated.","Require a plan for subject notification of the secondary use, even if full consent is waived."]},
+  {id:"a6",code:"§46.111(a)(6)",title:"Adequate data monitoring",pp:["b"],
+   reg:"When appropriate, the research plan makes adequate provision for monitoring the data collected to ensure the safety of subjects.",
+   bel:[{p:"b",n:"Beneficence",t:"Data safety monitoring operationalizes beneficence as a continuing obligation — not a one-time approval determination. In AI research, model drift and performance degradation are the functional equivalents of adverse events. A protocol lacking prospective performance thresholds and stopping rules fails (a)(6) even if it passed (a)(2) at the time of approval."}],
+   ten:null,
+   sc:"The protocol states 'model performance will be monitored on an ongoing basis by the study team.' No metrics are specified, no monitoring frequency is defined, no stopping threshold is identified, and no independent monitoring body is proposed. The team argues a DSMB is unnecessary because the study is 'observational.'",
+   fl:"'Monitored on an ongoing basis' is not a monitoring plan — it is an intention with no operational content. The DSMB argument conflates study design with risk level. An observational AI study in which AI outputs influence clinical decisions is not low-risk by virtue of its observational label.",
+   ac:["Require prospective performance metrics with defined acceptable floors below which the AI will not be used.","Require a monitoring schedule: who reviews performance data, at what frequency, using what data sources.","Require prospective stopping rules: what event or performance decline triggers mandatory protocol modification and IRB re-review.","Assess whether independent monitoring is required rather than self-monitoring by the development team."]},
+  {id:"a7",code:"§46.111(a)(7)",title:"Privacy and confidentiality",pp:["rp","j"],
+   reg:"When appropriate, adequate provisions to protect the privacy of subjects and to maintain the confidentiality of data.",
+   bel:[{p:"rp",n:"Respect for persons",t:"Privacy protects the individual's control over information about themselves — a dimension of autonomy that persists beyond the consent interaction. In AI research, HIPAA Safe Harbor addresses training data, not the model. Model weights can encode and reproduce individual-level information and may themselves constitute a privacy risk."},{p:"j",n:"Justice",t:"Privacy failures do not fall equally across populations. Groups with less social and legal power face greater downstream harm — employment discrimination, immigration consequences, insurance denial. Treating privacy as purely technical compliance fails the distributive justice dimension."}],
+   ten:null,
+   sc:"The protocol states EEG data will be de-identified per HIPAA Safe Harbor before model training. Model weights will be retained by the startup for future commercial versions. The protocol does not address model-weight privacy. The study population includes undocumented immigrant families for whom a seizure diagnosis could have immigration-related consequences.",
+   fl:"HIPAA Safe Harbor addresses the training data, not the model. The protocol's silence on model-weight privacy is a material gap. For undocumented immigrant subjects, the downstream consequences of a privacy failure are categorically more severe — a justice concern (a)(7) must reach.",
+   ac:["Require the protocol to address model-weight privacy: can the trained model be used to reconstruct or infer information about individual training subjects?","Require a data flow diagram mapping where EEG data is processed, stored, and transmitted — including startup cloud infrastructure.","Assess whether commercial use of model weights requires additional subject authorization beyond the research consent.","For the immigrant subpopulation, require explicit consent disclosure of what data is retained, by whom, and under what legal protections."]},
+  {id:"a8",code:"§46.111(a)(8)",title:"Limited review — broad consent",pp:["rp","j"],
+   reg:"For §46.104(d)(7) limited review: IRB determines broad consent is obtained per §46.116(d), appropriately documented or waived, and that changes to storage or maintenance of identifiable information are adequately protected.",
+   bel:[{p:"rp",n:"Respect for persons",t:"Broad consent preserves an attenuated form of autonomy over secondary data use. The IRB must assess whether the broad consent document actually described AI/ML research as a foreseeable use. This pathway authorizes storage and secondary use only — it does not authorize the AI research itself."},{p:"j",n:"Justice",t:"The (a)(8) pathway is disproportionately used with EHR datasets where historically marginalized populations are overrepresented. Broad consent obtained years before AI research was contemplated may not represent genuine authorization for commercial AI training by a private company with no accountability to the data-source community."}],
+   ten:"The (a)(8) pathway is a scoping tool, not an approval shortcut. IRBs must be alert to teams conflating limited review authorization with approval to conduct a full AI study.",
+   sc:"The team submits an (a)(8) limited review request to use five years of archived EEG data. The original broad consent (2018–2023) states data may be used for 'future neurological research, including research using advanced analytical methods.' The team argues this covers commercial AI model training.",
+   fl:"'Advanced analytical methods' drafted in 2018–2023 may not encompass commercial AI model training. Ambiguity should be resolved in favor of subjects' reasonable expectations — not the researcher's preferred use.",
+   ac:["Review the actual broad consent language and assess whether a reasonable 2018–2023 subject would have understood it to authorize commercial AI model training.","Confirm that (a)(8) authorizes secondary data use only — the prospective AI study requires separate full IRB review.","Assess whether transferring archived data to startup infrastructure constitutes a 'change in storage or maintenance' requiring the (a)(8)(iii) privacy analysis.","Document the IRB's reasoning on whether the safety-net population that provided this data is the population likely to benefit from the commercial product."]},
+  {id:"b",code:"§46.111(b)",title:"Vulnerable population safeguards",pp:["rp","j","b"],
+   reg:"When some or all subjects are likely vulnerable to coercion or undue influence — including children, prisoners, individuals with impaired decision-making capacity, or economically or educationally disadvantaged persons — additional safeguards must be included.",
+   bel:[{p:"rp",n:"Respect for persons",t:"The Belmont Report recognizes that autonomy is not uniform — individuals with diminished autonomy require additional protections. In AI research, this extends to subjects who cannot evaluate AI-generated information, who are institutionally positioned to accept AI-driven decisions without genuine capacity to question them, or who do not understand they are being assessed by an AI system at all."},{p:"j",n:"Justice",t:"Justice requires that vulnerable populations not bear disproportionate research burdens. The prior question is whether this population should be in the study at all, given who will benefit from the AI's eventual deployment. Enrollment driven by accessibility rather than research necessity fails justice at a structural level."},{p:"b",n:"Beneficence",t:"Vulnerable populations face elevated risk from AI-influenced decisions they cannot interrogate, from AI systems that perform poorly on their demographic group, and from deployment of a tool whose developers have no accountability relationship with them. Additional safeguards under (b) must be calibrated to these specific AI-related risks — not imported from non-AI research templates."}],
+   ten:"(b) is the only criterion invoking all three Belmont principles simultaneously. Vulnerability sits at the intersection of compromised autonomy, elevated harm risk, and unfair burden distribution. IRBs that treat (b) as a checklist item rather than a substantive multi-principle analysis are systematically underprotecting vulnerable populations in AI research.",
+   sc:"The study enrolls children from low-income, predominantly Spanish-speaking families. The protocol's (b) section states: 'Additional protections for children are addressed through parental consent and age-appropriate assent per institutional policy.' No safeguards specific to AI, language access, or socioeconomic vulnerability are described. Assent materials are in English only.",
+   fl:"Importing standard pediatric protections wholesale does not satisfy (b) for AI research in this population. The specific vulnerabilities — language barrier, economic dependence on the safety-net institution, inability to evaluate AI outputs — require safeguards that go beyond standard pediatric assent procedures.",
+   ac:["Require the (b) analysis to specifically address AI-related vulnerabilities: what safeguards protect subjects who cannot evaluate AI-generated clinical recommendations?","Require Spanish-language assent and LAR consent documents reviewed for literacy-appropriate readability — not just interpreter availability.","Assess whether the neurologist's exposure to NeuroPred outputs before interacting with the family creates an undue-influence dynamic requiring a structural safeguard.","Require the protocol to address what happens if a family refuses the AI component — is this option practically available without affecting care quality?","Confirm the (b) determination reflects AI-specific risks for this population, not a cross-reference to standard pediatric research protections."]}
+];
+
+var PL={rp:"Respect for persons",b:"Beneficence",j:"Justice"};
+var PC={rp:{dot:"pc-dot-rp",nm:"pc-name-rp pcard-rp",np:"npill-rp",dp:"dpill-rp"},b:{dot:"pc-dot-b",nm:"pc-name-b pcard-b",np:"npill-b",dp:"dpill-b"},j:{dot:"pc-dot-j",nm:"pc-name-j pcard-j",np:"npill-j",dp:"dpill-j"}};
+var TABS=["Regulatory text","Belmont analysis","Scenario","Reviewer actions"];
+var cId=null,cTab=0;
+
+var homeSVG='<svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
+var chevSVG='<svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>';
+var arrSVG='<svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>';
+
+function buildNav(){
+  var h='<div class="nav-grp">§(a) — approval criteria</div>';
+  D.forEach(function(c,i){
+    if(i===D.length-1) h+='<div class="nav-grp bordered">§(b)</div>';
+    var pills=c.pp.map(function(p){return '<span class="npill npill-'+p+'">'+PL[p].split(' ')[0]+'</span>';}).join('');
+    h+='<div class="nitem" data-id="'+c.id+'" role="button" tabindex="0" aria-label="'+c.code+' '+c.title+'"><div class="nitem-code">'+c.code+'</div><div class="nitem-ttl">'+c.title+'</div><div class="nitem-pills">'+pills+'</div></div>';
+  });
+  document.getElementById('navlist').innerHTML=h;
+}
+
+function setNav(id){
+  document.querySelectorAll('.nitem').forEach(function(el){el.classList.toggle('active',el.getAttribute('data-id')===id);});
+}
+
+function showHome(){
+  cId=null; cTab=0;
+  document.querySelectorAll('.nitem').forEach(function(el){el.classList.remove('active');});
+  document.getElementById('detail').innerHTML=
+    '<div class="home-screen">'+
+    '<div class="hs-eyebrow">IRB Reviewer Reference Tool</div>'+
+    '<div class="hs-title">45 CFR 46.111 Approval Criteria<br><span>Applied to AI Research</span></div>'+
+    '<div class="hs-desc">This tool helps IRB reviewers apply the Common Rule approval criteria to protocols involving artificial intelligence and machine learning systems. Each criterion is mapped to the relevant Belmont Report principles, illustrated with a realistic AI protocol scenario, and paired with concrete reviewer actions.</div>'+
+    '<div class="hs-cards">'+
+      '<div class="hs-card"><div class="hs-card-icon">📚</div><div class="hs-card-ttl">What you will find</div><div class="hs-card-txt">All 8 criteria under §46.111(a) plus §46.111(b), each with regulatory text, Belmont principle mapping, a running AI protocol scenario, and numbered reviewer actions.</div></div>'+
+      '<div class="hs-card"><div class="hs-card-icon">🔍</div><div class="hs-card-ttl">Who this is for</div><div class="hs-card-txt">IRB reviewers and staff evaluating AI and machine learning research protocols. Useful for initial review, full board discussion, and training new reviewers on AI-specific issues.</div></div>'+
+      '<div class="hs-card"><div class="hs-card-icon">🖱️</div><div class="hs-card-ttl">How to use it</div><div class="hs-card-txt">Select any criterion from the left panel. Use the four tabs — Regulatory text, Belmont analysis, Scenario, and Reviewer actions — to work through each criterion at your own pace.</div></div>'+
+      '<div class="hs-card"><div class="hs-card-icon">🧠</div><div class="hs-card-ttl">The running scenario</div><div class="hs-card-txt">All examples use NeuroPred v2.1, a fictional AI seizure-prediction protocol with a PI-developer conflict of interest, a pediatric safety-net population, and a training-deployment demographic mismatch.</div></div>'+
+    '</div>'+
+    '<div class="hs-legend">'+
+      '<div class="hs-leg"><div class="leg-dot" style="background:#4A5FD4;"></div>Respect for persons</div>'+
+      '<div class="hs-leg"><div class="leg-dot" style="background:#1D8A52;"></div>Beneficence</div>'+
+      '<div class="hs-leg"><div class="leg-dot" style="background:#C47A00;"></div>Justice</div>'+
+    '</div>'+
+    '<div class="hs-hint">'+arrSVG+'Select a criterion from the left panel to begin</div>'+
+    '</div>';
+}
+
+function load(id,tab){
+  var c=null;
+  for(var i=0;i<D.length;i++){if(D[i].id===id){c=D[i];break;}}
+  if(!c)return;
+  cId=id; cTab=tab||0;
+  setNav(id);
+  var pills=c.pp.map(function(p){return '<span class="dpill dpill-'+p+'">'+PL[p]+'</span>';}).join('');
+  var tabsH=TABS.map(function(t,i){return '<div class="tab'+(i===cTab?' active':'')+'" data-tab="'+i+'" role="tab" aria-selected="'+(i===cTab)+'">'+t+'</div>';}).join('');
+  var body='';
+  if(cTab===0){
+    body='<div class="slbl">Regulatory text</div><div class="reg-block">'+c.reg+'</div>';
+  } else if(cTab===1){
+    c.bel.forEach(function(b){
+      var cl=PC[b.p];
+      body+='<div class="pcard pcard-'+b.p+'"><div class="pc-head"><div class="pc-dot '+cl.dot+'"></div><div class="pc-name '+cl.nm.split(' ')[0]+'">'+b.n+'</div></div><div class="pc-text">'+b.t+'</div></div>';
+    });
+    if(c.ten) body+='<div class="tension"><div class="tension-lbl">Principle tension</div><div class="tension-txt">'+c.ten+'</div></div>';
+  } else if(cTab===2){
+    body='<div class="sc-card"><div class="sc-lbl">NeuroPred v2.1 — AI-assisted seizure prediction protocol</div><div class="sc-txt">'+c.sc+'</div><div class="sc-flag"><div class="sc-flag-lbl">Reviewer flag</div><div class="sc-flag-txt">'+c.fl+'</div></div></div>';
+  } else {
+    body='<div class="slbl">Actions for the reviewing IRB member</div>';
+    c.ac.forEach(function(a,i){body+='<div class="aitem"><div class="anum">'+(i+1)+'</div><div class="atxt">'+a+'</div></div>';});
+  }
+  document.getElementById('detail').innerHTML=
+    '<div class="d-head">'+
+      '<div class="d-crumb">'+homeSVG+chevSVG+'<span>'+c.code+'</span></div>'+
+      '<div class="d-code">'+c.code+'</div>'+
+      '<div class="d-title">'+c.title+'</div>'+
+      '<div class="d-pills">'+pills+'</div>'+
+    '</div>'+
+    '<div class="tabs" id="tabs" role="tablist">'+tabsH+'</div>'+
+    '<div class="tab-body" role="tabpanel">'+body+'</div>';
+  document.getElementById('tabs').addEventListener('click',function(e){
+    var el=e.target.closest('.tab');
+    if(el&&cId) load(cId,parseInt(el.getAttribute('data-tab')));
+  });
+}
+
+buildNav();
+document.getElementById('homebtn').addEventListener('click',showHome);
+document.getElementById('navlist').addEventListener('click',function(e){
+  var el=e.target.closest('.nitem');
+  if(el) load(el.getAttribute('data-id'),0);
+});
+document.getElementById('navlist').addEventListener('keydown',function(e){
+  if(e.key==='Enter'||e.key===' '){
+    var el=e.target.closest('.nitem');
+    if(el){e.preventDefault();load(el.getAttribute('data-id'),0);}
+  }
+});
+showHome();
+})();
+</script>
+</body>
+</html>
